@@ -1,0 +1,38 @@
+[
+  {
+    "id": "run_004",
+    "period": "2026-07",
+    "triggeredBy": "manual",
+    "status": "running",
+    "startedAt": "2026-07-09T01:00:00Z",
+    "finishedAt": null,
+    "signalsProcessed": null
+  },
+  {
+    "id": "run_003",
+    "period": "2026-06",
+    "triggeredBy": "cron",
+    "status": "completed",
+    "startedAt": "2026-07-01T00:00:00Z",
+    "finishedAt": "2026-07-01T00:12:00Z",
+    "signalsProcessed": 121
+  },
+  {
+    "id": "run_002",
+    "period": "2026-05",
+    "triggeredBy": "cron",
+    "status": "completed",
+    "startedAt": "2026-06-01T00:00:00Z",
+    "finishedAt": "2026-06-01T00:11:00Z",
+    "signalsProcessed": 108
+  },
+  {
+    "id": "run_001",
+    "period": "2026-04",
+    "triggeredBy": "manual",
+    "status": "failed",
+    "startedAt": "2026-05-01T00:00:00Z",
+    "finishedAt": "2026-05-01T00:02:00Z",
+    "signalsProcessed": null
+  }
+]

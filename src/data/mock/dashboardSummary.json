@@ -1,0 +1,11 @@
+{
+  "period": "2026-07",
+  "content": "This period surfaced 128 signals across all six departments. The dominant pattern is delay from layered approvals, which continues to rise and now spans operations, sales, and finance. System reliability is the second concern, driven by a severe order-system outage and recurring remote-access instability. On the positive side, the onboarding buddy program is consistently praised and looks ready to scale. Manual re-entry between disconnected systems is trending down as early fixes take hold.",
+  "highlights": [
+    "Approval delays are the top theme and still rising (23 reports, up from 19).",
+    "A severe order-system outage and recurring VPN drops are hurting reliability.",
+    "The onboarding buddy program is a strong positive worth scaling org-wide.",
+    "Manual re-entry rework is trending down as integration fixes land."
+  ],
+  "generatedAt": "2026-07-09T01:00:00Z"
+}

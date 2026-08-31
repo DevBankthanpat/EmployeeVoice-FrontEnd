@@ -1,0 +1,7 @@
+{
+  "totalSignals": { "value": 128, "delta": 14 },
+  "highImpact": { "value": 34, "delta": 6 },
+  "positive": { "value": 16, "delta": 3 },
+  "departmentsAffected": { "value": 6, "delta": 0 },
+  "newThisWeek": { "value": 12, "delta": -2 }
+}

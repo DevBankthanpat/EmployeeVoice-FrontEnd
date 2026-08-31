@@ -1,0 +1,32 @@
+[
+  {
+    "role": "employee",
+    "canSubmitSignals": true,
+    "canViewOwnSubmissions": true,
+    "canViewDashboard": false,
+    "canManageMembers": false,
+    "canManageOrgSettings": false,
+    "canRunAnalysis": false,
+    "canViewAuditLog": false
+  },
+  {
+    "role": "org_viewer",
+    "canSubmitSignals": false,
+    "canViewOwnSubmissions": false,
+    "canViewDashboard": true,
+    "canManageMembers": false,
+    "canManageOrgSettings": false,
+    "canRunAnalysis": false,
+    "canViewAuditLog": false
+  },
+  {
+    "role": "org_admin",
+    "canSubmitSignals": false,
+    "canViewOwnSubmissions": false,
+    "canViewDashboard": true,
+    "canManageMembers": true,
+    "canManageOrgSettings": true,
+    "canRunAnalysis": true,
+    "canViewAuditLog": true
+  }
+]

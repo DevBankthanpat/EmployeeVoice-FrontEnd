@@ -1,0 +1,62 @@
+[
+  {
+    "id": "act_001",
+    "relatedThemeId": "thm_approval",
+    "relatedThemeName": "Approval steps delay delivery",
+    "priority": "high",
+    "title": "Introduce a fast-track approval tier for low-risk requests",
+    "description": "Define clear thresholds under which routine requests need a single approver instead of a full chain, and publish target turnaround times.",
+    "confidence": 0.88,
+    "status": "new"
+  },
+  {
+    "id": "act_002",
+    "relatedThemeId": "thm_downtime",
+    "relatedThemeName": "System downtime interrupts daily work",
+    "priority": "high",
+    "title": "Add failover and a public status page for core systems",
+    "description": "Stand up automated failover for the order-management system and a shared status page so teams see incidents and recovery in real time.",
+    "confidence": 0.82,
+    "status": "new"
+  },
+  {
+    "id": "act_003",
+    "relatedThemeId": "thm_comm",
+    "relatedThemeName": "Cross-team handoffs lack clear ownership",
+    "priority": "medium",
+    "title": "Define ownership (RACI) for cross-team handoffs",
+    "description": "Agree a simple responsibility map for the top three cross-team workflows and attach a handoff checklist to each.",
+    "confidence": 0.76,
+    "status": "reviewed"
+  },
+  {
+    "id": "act_004",
+    "relatedThemeId": "thm_rework",
+    "relatedThemeName": "Manual re-entry between systems causes rework",
+    "priority": "medium",
+    "title": "Integrate finance and operations systems to remove manual re-entry",
+    "description": "Scope a one-way sync between the two finance systems to eliminate the most frequent double-entry path.",
+    "confidence": 0.8,
+    "status": "new"
+  },
+  {
+    "id": "act_005",
+    "relatedThemeId": "thm_onboard",
+    "relatedThemeName": "Onboarding buddy program well received",
+    "priority": "low",
+    "title": "Scale the onboarding buddy program org-wide",
+    "description": "Roll the buddy program out to all departments and add a lightweight check-in at 30 and 60 days.",
+    "confidence": 0.71,
+    "status": "reviewed"
+  },
+  {
+    "id": "act_006",
+    "relatedThemeId": "thm_equip",
+    "relatedThemeName": "Field teams lack adequate equipment",
+    "priority": "medium",
+    "title": "Refresh field equipment and set a replacement SLA",
+    "description": "Audit field equipment, replace the oldest units, and publish a replacement service level so gaps do not recur.",
+    "confidence": 0.69,
+    "status": "done"
+  }
+]

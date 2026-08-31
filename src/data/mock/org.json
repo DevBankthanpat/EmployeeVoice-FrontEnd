@@ -1,0 +1,8 @@
+{
+  "id": "org_001",
+  "name": "Meridian Group",
+  "logoUrl": null,
+  "minGroupThreshold": 5,
+  "consentPolicyText": "By submitting a signal you may choose to allow the organization to use it for statistical analysis and AI-assisted summarization. You can submit anonymously — anonymous submissions are never linked to your identity, and no individual submitter can be identified from any dashboard.",
+  "createdAt": "2025-01-01T00:00:00Z"
+}

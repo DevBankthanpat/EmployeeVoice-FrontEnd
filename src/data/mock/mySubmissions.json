@@ -1,0 +1,38 @@
+[
+  {
+    "id": "sub_001",
+    "title": "Forklift booking clashes across shifts",
+    "signalTypes": ["process_workflow", "equipment_resource"],
+    "impactLevel": "high",
+    "status": "analyzed",
+    "isAnonymous": false,
+    "createdAt": "2026-06-18T02:00:00Z"
+  },
+  {
+    "id": "sub_002",
+    "title": "Dispatch handoff often missing paperwork",
+    "signalTypes": ["communication", "process_workflow"],
+    "impactLevel": "medium",
+    "status": "analyzed",
+    "isAnonymous": false,
+    "createdAt": "2026-06-30T03:30:00Z"
+  },
+  {
+    "id": "sub_003",
+    "title": "Suggestion: a shared shift calendar",
+    "signalTypes": ["suggestion_improvement"],
+    "impactLevel": "low",
+    "status": "processing",
+    "isAnonymous": true,
+    "createdAt": "2026-07-05T06:00:00Z"
+  },
+  {
+    "id": "sub_004",
+    "title": "Loading bay lighting is poor at night",
+    "signalTypes": ["equipment_resource", "incident_risk"],
+    "impactLevel": "medium",
+    "status": "submitted",
+    "isAnonymous": false,
+    "createdAt": "2026-07-08T11:00:00Z"
+  }
+]

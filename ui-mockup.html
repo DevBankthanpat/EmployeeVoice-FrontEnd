@@ -1,0 +1,2113 @@
+<!doctype html>
+<html lang="th">
+  <head>
+    <meta charset="utf-8" />
+    <title>Employee Voice — UI mockup</title>
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@2.47.0/dist/tabler-icons.min.css"
+    />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.4/chart.umd.min.js"></script>
+    <style>
+      @import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap");
+      * {
+        box-sizing: border-box;
+      }
+      body {
+        margin: 0;
+        background: #eef1f4;
+        padding: 32px 16px;
+        font-family: "Inter", sans-serif;
+      }
+      .ev-tab {
+        font-family: "Inter", sans-serif;
+        font-size: 13px;
+        font-weight: 500;
+        padding: 8px 14px;
+        border-radius: 8px;
+        border: 1px solid #e2e8f0;
+        background: #fff;
+        color: #475569;
+        cursor: pointer;
+        display: inline-flex;
+        align-items: center;
+      }
+      .ev-tab.active {
+        background: #368b89;
+        color: #fff;
+        border-color: #368b89;
+      }
+      .ev-screen {
+        display: none;
+      }
+      .ev-screen.active {
+        display: block;
+      }
+      .ev-frame {
+        border: 1px solid #e2e8f0;
+        border-radius: 12px;
+        overflow: hidden;
+        background: #f8fafc;
+        color: #1e293b;
+      }
+      .ev-card {
+        background: #fff;
+        border: 1px solid #e2e8f0;
+        border-radius: 14px;
+        padding: 20px 22px;
+        margin-bottom: 14px;
+      }
+      .ev-sec-head {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+      }
+      .ev-num {
+        width: 26px;
+        height: 26px;
+        border-radius: 50%;
+        background: #368b89;
+        color: #fff;
+        font-size: 12px;
+        font-weight: 600;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-shrink: 0;
+      }
+      .ev-sec-title {
+        margin: 0;
+        font-size: 14px;
+        font-weight: 500;
+        color: #1e293b;
+      }
+      .ev-sec-sub {
+        margin: 1px 0 0;
+        font-size: 11px;
+        color: #94a3b8;
+      }
+      .ev-chip {
+        display: inline-flex;
+        align-items: center;
+        gap: 5px;
+        padding: 7px 14px;
+        border-radius: 999px;
+        border: 1px solid #e2e8f0;
+        background: #fff;
+        color: #475569;
+        font-size: 12.5px;
+      }
+      .ev-chip.sel {
+        background: #368b89;
+        border-color: #368b89;
+        color: #fff;
+      }
+      .ev-field {
+        background: #fff;
+        border: 1px solid #e2e8f0;
+        border-radius: 12px;
+        padding: 10px 14px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        cursor: pointer;
+      }
+      .ev-field-val {
+        font-size: 13px;
+        font-weight: 500;
+        color: #1e293b;
+        margin: 0;
+      }
+      .ev-field-label {
+        font-size: 11px;
+        color: #94a3b8;
+        margin: 1px 0 0;
+      }
+      .ev-impact {
+        padding: 7px 16px;
+        border-radius: 8px;
+        font-size: 12.5px;
+        font-weight: 500;
+        border: 1px solid #e2e8f0;
+        background: #fff;
+        color: #94a3b8;
+      }
+      .ev-upload {
+        border: 1.5px dashed #cbd5e1;
+        border-radius: 12px;
+        padding: 16px 10px;
+        text-align: center;
+        color: #94a3b8;
+        font-size: 11.5px;
+      }
+      .ev-score {
+        width: 32px;
+        height: 32px;
+        border-radius: 50%;
+        border: 1px solid #e2e8f0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 13px;
+        color: #475569;
+        background: #fff;
+      }
+      .ev-score.sel {
+        background: #368b89;
+        border-color: #368b89;
+        color: #fff;
+      }
+      .ev-check-row {
+        display: flex;
+        gap: 10px;
+        align-items: flex-start;
+        padding: 10px 0;
+        border-bottom: 1px solid #f1f5f9;
+      }
+      .ev-check-row:last-child {
+        border-bottom: none;
+      }
+      .ev-checkbox {
+        width: 18px;
+        height: 18px;
+        border-radius: 5px;
+        border: 1.5px solid #368b89;
+        background: #368b89;
+        color: #fff;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 11px;
+        flex-shrink: 0;
+        margin-top: 1px;
+      }
+      .ev-tile {
+        background: #fff;
+        border: 1px solid #e2e8f0;
+        border-radius: 12px;
+        padding: 9px 12px;
+        min-width: 118px;
+        flex: 1;
+      }
+      .ev-tile-label {
+        font-size: 10px;
+        color: #94a3b8;
+        margin: 0 0 2px;
+      }
+      .ev-tile-val {
+        font-size: 12.5px;
+        font-weight: 500;
+        color: #1e293b;
+        margin: 0;
+      }
+      .ev-card2 {
+        background: #fff;
+        border: 1px solid #e2e8f0;
+        border-radius: 16px;
+        padding: 18px 20px;
+        box-shadow: 0 1px 3px rgba(15, 23, 42, 0.05);
+      }
+      .ev-icon-btn {
+        width: 30px;
+        height: 30px;
+        border-radius: 50%;
+        border: 1px solid #e2e8f0;
+        background: #fff;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: #475569;
+        flex-shrink: 0;
+      }
+      .ev-hist-row {
+        display: grid;
+        grid-template-columns: 2fr 1fr 1fr 0.9fr;
+        padding: 12px 4px;
+        border-bottom: 1px solid #f1f5f9;
+        align-items: center;
+      }
+      .ev-hist-row:last-child {
+        border-bottom: none;
+      }
+    </style>
+  </head>
+  <body>
+    <div style="max-width: 920px; margin: 0 auto">
+      <div
+        style="display: flex; gap: 8px; flex-wrap: wrap; padding: 4px 0 16px"
+        id="ev-tabs"
+      >
+        <button class="ev-tab" data-screen="login" onclick="evSwitch('login')">
+          <i class="ti ti-login" style="margin-right: 6px; font-size: 15px"></i
+          >Login
+        </button>
+        <button class="ev-tab" data-screen="home" onclick="evSwitch('home')">
+          <i class="ti ti-home" style="margin-right: 6px; font-size: 15px"></i
+          >Employee home
+        </button>
+        <button
+          class="ev-tab"
+          data-screen="submit"
+          onclick="evSwitch('submit')"
+        >
+          <i class="ti ti-edit" style="margin-right: 6px; font-size: 15px"></i
+          >Submit signal
+        </button>
+        <button
+          class="ev-tab active"
+          data-screen="dashboard"
+          onclick="evSwitch('dashboard')"
+        >
+          <i
+            class="ti ti-layout-dashboard"
+            style="margin-right: 6px; font-size: 15px"
+          ></i
+          >Dashboard
+        </button>
+        <button
+          class="ev-tab"
+          data-screen="members"
+          onclick="evSwitch('members')"
+        >
+          <i class="ti ti-users" style="margin-right: 6px; font-size: 15px"></i
+          >Members
+        </button>
+      </div>
+
+      <div class="ev-frame">
+        <div class="ev-screen" data-screen="login">
+          <div
+            style="
+              min-height: 520px;
+              display: flex;
+              align-items: center;
+              justify-content: center;
+              padding: 48px 24px;
+            "
+          >
+            <div
+              style="
+                width: 100%;
+                max-width: 340px;
+                background: #fff;
+                border: 1px solid #e2e8f0;
+                border-radius: 12px;
+                padding: 32px 28px;
+                text-align: center;
+              "
+            >
+              <div
+                style="
+                  width: 40px;
+                  height: 40px;
+                  border-radius: 10px;
+                  background: #368b89;
+                  display: flex;
+                  align-items: center;
+                  justify-content: center;
+                  margin: 0 auto 16px;
+                "
+              >
+                <i
+                  class="ti ti-message-circle-2"
+                  style="color: #fff; font-size: 20px"
+                ></i>
+              </div>
+              <h2
+                style="
+                  margin: 0 0 4px;
+                  font-size: 18px;
+                  font-weight: 500;
+                  color: #1e293b;
+                "
+              >
+                Employee Voice
+              </h2>
+              <p style="margin: 0 0 24px; font-size: 13px; color: #64748b">
+                Sign in to share your voice
+              </p>
+              <div style="text-align: left; margin-bottom: 14px">
+                <label
+                  style="
+                    font-size: 12px;
+                    color: #475569;
+                    display: block;
+                    margin-bottom: 4px;
+                  "
+                  >Email</label
+                >
+                <input
+                  type="email"
+                  placeholder="name@company.com"
+                  style="
+                    width: 100%;
+                    padding: 9px 12px;
+                    border: 1px solid #e2e8f0;
+                    border-radius: 8px;
+                    font-size: 14px;
+                    color: #1e293b;
+                  "
+                />
+              </div>
+              <div style="text-align: left; margin-bottom: 8px">
+                <label
+                  style="
+                    font-size: 12px;
+                    color: #475569;
+                    display: block;
+                    margin-bottom: 4px;
+                  "
+                  >Password</label
+                >
+                <input
+                  type="password"
+                  placeholder="••••••••"
+                  style="
+                    width: 100%;
+                    padding: 9px 12px;
+                    border: 1px solid #e2e8f0;
+                    border-radius: 8px;
+                    font-size: 14px;
+                    color: #1e293b;
+                  "
+                />
+              </div>
+              <div style="text-align: right; margin-bottom: 18px">
+                <span style="font-size: 12px; color: #368b89"
+                  >Forgot password?</span
+                >
+              </div>
+              <button
+                style="
+                  width: 100%;
+                  padding: 10px;
+                  background: #368b89;
+                  color: #fff;
+                  border: none;
+                  border-radius: 8px;
+                  font-size: 14px;
+                  font-weight: 500;
+                "
+              >
+                Sign in
+              </button>
+              <div
+                style="
+                  display: flex;
+                  justify-content: center;
+                  gap: 14px;
+                  margin-top: 20px;
+                "
+              >
+                <span style="font-size: 12px; color: #368b89; font-weight: 600"
+                  >TH</span
+                >
+                <span style="font-size: 12px; color: #94a3b8">EN</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="ev-screen" data-screen="home">
+          <div style="padding: 32px 28px">
+            <p style="margin: 0 0 4px; font-size: 13px; color: #64748b">
+              Good afternoon
+            </p>
+            <h2
+              style="
+                margin: 0 0 14px;
+                font-size: 22px;
+                font-weight: 500;
+                color: #1e293b;
+              "
+            >
+              Somchai Srisuk
+            </h2>
+
+            <div
+              style="
+                display: flex;
+                gap: 8px;
+                flex-wrap: wrap;
+                margin-bottom: 20px;
+              "
+            >
+              <div class="ev-tile">
+                <p class="ev-tile-label">🏢 สาขา/หน่วยงาน</p>
+                <p class="ev-tile-val">สำนักงานใหญ่ กรุงเทพ</p>
+              </div>
+              <div class="ev-tile">
+                <p class="ev-tile-label">🏬 แผนก</p>
+                <p class="ev-tile-val">เทคโนโลยีสารสนเทศ</p>
+              </div>
+              <div class="ev-tile">
+                <p class="ev-tile-label">👥 ทีม</p>
+                <p class="ev-tile-val">Backend Engineering</p>
+              </div>
+              <div class="ev-tile">
+                <p class="ev-tile-label">🧑‍💼 ตำแหน่ง</p>
+                <p class="ev-tile-val">Software Engineer</p>
+              </div>
+              <div class="ev-tile">
+                <p class="ev-tile-label">💻 รูปแบบการทำงาน</p>
+                <p class="ev-tile-val">Hybrid</p>
+              </div>
+            </div>
+
+            <div
+              style="
+                background: #368b89;
+                border-radius: 12px;
+                padding: 22px 24px;
+                color: #fff;
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+                gap: 16px;
+                margin-bottom: 18px;
+                flex-wrap: wrap;
+              "
+            >
+              <div style="min-width: 220px">
+                <p style="margin: 0 0 6px; font-size: 15px; font-weight: 500">
+                  Have something to share?
+                </p>
+                <p
+                  style="
+                    margin: 0;
+                    font-size: 13px;
+                    color: #d7ecea;
+                    max-width: 320px;
+                  "
+                >
+                  Report an issue, friction, or something positive you noticed
+                  at work.
+                </p>
+              </div>
+              <button
+                style="
+                  background: #fff;
+                  color: #368b89;
+                  border: none;
+                  padding: 10px 18px;
+                  border-radius: 8px;
+                  font-size: 13px;
+                  font-weight: 500;
+                  white-space: nowrap;
+                "
+              >
+                Submit a signal
+              </button>
+            </div>
+
+            <div
+              style="
+                display: inline-flex;
+                gap: 8px;
+                align-items: center;
+                background: #e1f5ee;
+                border: 1px solid #bfe3da;
+                border-radius: 8px;
+                padding: 9px 14px;
+                margin-bottom: 24px;
+              "
+            >
+              <i
+                class="ti ti-shield-lock"
+                style="color: #0f6e56; font-size: 16px"
+              ></i>
+              <span style="font-size: 12px; color: #0f6e56; font-weight: 500"
+                >Your identity is always protected</span
+              >
+            </div>
+
+            <div
+              style="
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                margin-bottom: 10px;
+              "
+            >
+              <h3
+                style="
+                  margin: 0;
+                  font-size: 14px;
+                  font-weight: 500;
+                  color: #1e293b;
+                "
+              >
+                Your submissions
+              </h3>
+              <span style="font-size: 12px; color: #368b89">View all</span>
+            </div>
+            <div style="display: flex; flex-direction: column; gap: 8px">
+              <div
+                style="
+                  background: #fff;
+                  border: 1px solid #e2e8f0;
+                  border-radius: 8px;
+                  padding: 12px 14px;
+                  display: flex;
+                  justify-content: space-between;
+                  align-items: center;
+                "
+              >
+                <div>
+                  <p style="margin: 0 0 2px; font-size: 13px; color: #1e293b">
+                    Slow approval process for expense claims
+                  </p>
+                  <p style="margin: 0; font-size: 11px; color: #94a3b8">
+                    Submitted 3 days ago
+                  </p>
+                </div>
+                <span
+                  style="
+                    font-size: 11px;
+                    background: #faeeda;
+                    color: #854f0b;
+                    padding: 3px 9px;
+                    border-radius: 999px;
+                    font-weight: 500;
+                  "
+                  >Processing</span
+                >
+              </div>
+              <div
+                style="
+                  background: #fff;
+                  border: 1px solid #e2e8f0;
+                  border-radius: 8px;
+                  padding: 12px 14px;
+                  display: flex;
+                  justify-content: space-between;
+                  align-items: center;
+                "
+              >
+                <div>
+                  <p style="margin: 0 0 2px; font-size: 13px; color: #1e293b">
+                    Great teamwork during system migration
+                  </p>
+                  <p style="margin: 0; font-size: 11px; color: #94a3b8">
+                    Submitted 2 weeks ago
+                  </p>
+                </div>
+                <span
+                  style="
+                    font-size: 11px;
+                    background: #e1f5ee;
+                    color: #0f6e56;
+                    padding: 3px 9px;
+                    border-radius: 999px;
+                    font-weight: 500;
+                  "
+                  >Analyzed</span
+                >
+              </div>
+              <div
+                style="
+                  background: #fff;
+                  border: 1px solid #e2e8f0;
+                  border-radius: 8px;
+                  padding: 12px 14px;
+                  display: flex;
+                  justify-content: space-between;
+                  align-items: center;
+                "
+              >
+                <div>
+                  <p style="margin: 0 0 2px; font-size: 13px; color: #1e293b">
+                    Meeting room booking conflicts
+                  </p>
+                  <p style="margin: 0; font-size: 11px; color: #94a3b8">
+                    Submitted 1 month ago
+                  </p>
+                </div>
+                <span
+                  style="
+                    font-size: 11px;
+                    background: #f1f5f9;
+                    color: #475569;
+                    padding: 3px 9px;
+                    border-radius: 999px;
+                    font-weight: 500;
+                  "
+                  >Submitted</span
+                >
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="ev-screen" data-screen="submit">
+          <div style="padding: 28px">
+            <div style="display: flex; gap: 8px; margin-bottom: 22px">
+              <div style="flex: 1">
+                <div
+                  style="
+                    height: 4px;
+                    border-radius: 999px;
+                    background: #368b89;
+                    margin-bottom: 6px;
+                  "
+                ></div>
+                <span
+                  style="font-size: 10.5px; color: #368b89; font-weight: 500"
+                  >1. ประเภทสัญญาณ</span
+                >
+              </div>
+              <div style="flex: 1">
+                <div
+                  style="
+                    height: 4px;
+                    border-radius: 999px;
+                    background: #368b89;
+                    margin-bottom: 6px;
+                  "
+                ></div>
+                <span
+                  style="font-size: 10.5px; color: #368b89; font-weight: 500"
+                  >2. รายละเอียด</span
+                >
+              </div>
+              <div style="flex: 1">
+                <div
+                  style="
+                    height: 4px;
+                    border-radius: 999px;
+                    background: #368b89;
+                    margin-bottom: 6px;
+                  "
+                ></div>
+                <span
+                  style="font-size: 10.5px; color: #368b89; font-weight: 500"
+                  >3. เพิ่มเติม</span
+                >
+              </div>
+              <div style="flex: 1">
+                <div
+                  style="
+                    height: 4px;
+                    border-radius: 999px;
+                    background: #368b89;
+                    margin-bottom: 6px;
+                  "
+                ></div>
+                <span
+                  style="font-size: 10.5px; color: #368b89; font-weight: 500"
+                  >4. ความเป็นส่วนตัว</span
+                >
+              </div>
+            </div>
+
+            <div class="ev-card">
+              <div class="ev-sec-head">
+                <span class="ev-num">1</span>
+                <div>
+                  <p class="ev-sec-title">ประเภทสัญญาณ (Signal Type)</p>
+                  <p class="ev-sec-sub">เลือกได้มากกว่า 1 ข้อ</p>
+                </div>
+              </div>
+              <div
+                style="
+                  display: flex;
+                  flex-wrap: wrap;
+                  gap: 8px;
+                  margin-top: 16px;
+                "
+              >
+                <span class="ev-chip sel">⚙️ Process / Workflow</span>
+                <span class="ev-chip">👥 People / Collaboration</span>
+                <span class="ev-chip">📢 Communication</span>
+                <span class="ev-chip">🖥️ System / Software</span>
+                <span class="ev-chip">📦 Equipment / Resource</span>
+                <span class="ev-chip">📋 Policy / Procedure</span>
+                <span class="ev-chip">🧑‍💼 Management / Decision</span>
+                <span class="ev-chip">💡 Suggestion / Improvement</span>
+                <span class="ev-chip sel">🚨 Incident / Risk</span>
+                <span class="ev-chip">😊 Positive Practice</span>
+              </div>
+            </div>
+
+            <div class="ev-card">
+              <div class="ev-sec-head">
+                <span class="ev-num">2</span>
+                <div>
+                  <p class="ev-sec-title">รายละเอียด (Detail)</p>
+                  <p class="ev-sec-sub">อธิบายสิ่งที่พบให้ชัดเจน</p>
+                </div>
+              </div>
+
+              <div style="margin-top: 16px; margin-bottom: 14px">
+                <label
+                  style="
+                    font-size: 12px;
+                    color: #475569;
+                    display: block;
+                    margin-bottom: 4px;
+                  "
+                  >หัวข้อ (Title)</label
+                >
+                <input
+                  type="text"
+                  placeholder="เช่น ต้องกรอกข้อมูลซ้ำ 3 ระบบ"
+                  style="
+                    width: 100%;
+                    padding: 10px 14px;
+                    border: 1px solid #e2e8f0;
+                    border-radius: 10px;
+                    font-size: 13px;
+                    color: #1e293b;
+                  "
+                />
+              </div>
+              <div style="margin-bottom: 16px">
+                <label
+                  style="
+                    font-size: 12px;
+                    color: #475569;
+                    display: block;
+                    margin-bottom: 4px;
+                  "
+                  >รายละเอียด</label
+                >
+                <textarea
+                  rows="3"
+                  placeholder="กรุณาอธิบายว่าเกิดอะไรขึ้น เกิดเมื่อไร และมีผลกระทบอย่างไร"
+                  style="
+                    width: 100%;
+                    padding: 10px 14px;
+                    border: 1px solid #e2e8f0;
+                    border-radius: 10px;
+                    font-size: 13px;
+                    color: #1e293b;
+                    resize: vertical;
+                  "
+                ></textarea>
+              </div>
+
+              <div style="margin-bottom: 16px">
+                <label
+                  style="
+                    font-size: 12px;
+                    color: #475569;
+                    display: block;
+                    margin-bottom: 6px;
+                  "
+                  >ความถี่ของเหตุการณ์</label
+                >
+                <div class="ev-field">
+                  <div>
+                    <p class="ev-field-val">เกิดเป็นประจำ</p>
+                    <p class="ev-field-label">ความถี่ของเหตุการณ์</p>
+                  </div>
+                  <i class="ti ti-chevron-down" style="color: #94a3b8"></i>
+                </div>
+              </div>
+
+              <div style="margin-bottom: 16px">
+                <label
+                  style="
+                    font-size: 12px;
+                    color: #475569;
+                    display: block;
+                    margin-bottom: 6px;
+                  "
+                  >ผลกระทบที่เกิดขึ้น (เลือกได้หลายข้อ)</label
+                >
+                <div style="display: flex; flex-wrap: wrap; gap: 8px">
+                  <span class="ev-chip sel">เสียเวลา</span>
+                  <span class="ev-chip sel">ทำงานซ้ำ</span>
+                  <span class="ev-chip">เกิดความผิดพลาด</span>
+                  <span class="ev-chip">ลูกค้าได้รับผลกระทบ</span>
+                  <span class="ev-chip">ทีมทำงานลำบาก</span>
+                  <span class="ev-chip sel">เกิดความเครียด</span>
+                  <span class="ev-chip">ต้นทุนเพิ่มขึ้น</span>
+                  <span class="ev-chip">อื่นๆ</span>
+                </div>
+              </div>
+
+              <div>
+                <label
+                  style="
+                    font-size: 12px;
+                    color: #475569;
+                    display: block;
+                    margin-bottom: 6px;
+                  "
+                  >ระดับผลกระทบ (Impact)</label
+                >
+                <div style="display: flex; gap: 8px; flex-wrap: wrap">
+                  <span
+                    class="ev-impact"
+                    style="
+                      background: #eaf3de;
+                      color: #3b6d11;
+                      border-color: #eaf3de;
+                    "
+                    >ต่ำ</span
+                  >
+                  <span
+                    class="ev-impact"
+                    style="
+                      background: #faeeda;
+                      color: #854f0b;
+                      border-color: #faeeda;
+                    "
+                    >ปานกลาง</span
+                  >
+                  <span class="ev-impact">สูง</span>
+                  <span class="ev-impact">ร้ายแรง</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="ev-card">
+              <div class="ev-sec-head">
+                <span class="ev-num">3</span>
+                <div>
+                  <p class="ev-sec-title">เพิ่มเติม (Optional)</p>
+                  <p class="ev-sec-sub">
+                    ไม่บังคับกรอก แต่ช่วยให้ AI วิเคราะห์แม่นยำขึ้น
+                  </p>
+                </div>
+              </div>
+
+              <div style="margin-top: 16px; margin-bottom: 16px">
+                <label
+                  style="
+                    font-size: 12px;
+                    color: #475569;
+                    display: block;
+                    margin-bottom: 6px;
+                  "
+                  >คุณคิดว่าสิ่งนี้เกี่ยวข้องกับเรื่องใด
+                  (เลือกได้หลายข้อ)</label
+                >
+                <div style="display: flex; flex-wrap: wrap; gap: 8px">
+                  <span class="ev-chip sel">ขั้นตอนการทำงาน</span>
+                  <span class="ev-chip">เครื่องมือหรือระบบ</span>
+                  <span class="ev-chip">การสื่อสาร</span>
+                  <span class="ev-chip sel">ทรัพยากรไม่เพียงพอ</span>
+                  <span class="ev-chip">การวางแผน</span>
+                  <span class="ev-chip">นโยบาย</span>
+                  <span class="ev-chip">การตัดสินใจ</span>
+                  <span class="ev-chip">ความรู้หรือการฝึกอบรม</span>
+                  <span class="ev-chip">อื่นๆ</span>
+                </div>
+              </div>
+
+              <div style="margin-bottom: 16px">
+                <label
+                  style="
+                    font-size: 12px;
+                    color: #475569;
+                    display: block;
+                    margin-bottom: 4px;
+                  "
+                  >ถ้าปรับปรุงได้ อยากให้เปลี่ยนแปลงอย่างไร</label
+                >
+                <textarea
+                  rows="2"
+                  placeholder="ข้อเสนอแนะของคุณ"
+                  style="
+                    width: 100%;
+                    padding: 10px 14px;
+                    border: 1px solid #e2e8f0;
+                    border-radius: 10px;
+                    font-size: 13px;
+                    color: #1e293b;
+                    resize: vertical;
+                  "
+                ></textarea>
+              </div>
+
+              <div style="margin-bottom: 18px">
+                <label
+                  style="
+                    font-size: 12px;
+                    color: #475569;
+                    display: block;
+                    margin-bottom: 8px;
+                  "
+                  >คิดว่าการแก้ไขนี้จะช่วยลดปัญหาได้มากน้อยแค่ไหน (1–5)</label
+                >
+                <div style="display: flex; gap: 8px">
+                  <span class="ev-score sel">1</span>
+                  <span class="ev-score sel">2</span>
+                  <span class="ev-score sel">3</span>
+                  <span class="ev-score">4</span>
+                  <span class="ev-score">5</span>
+                </div>
+              </div>
+
+              <div style="margin-bottom: 16px">
+                <label
+                  style="
+                    font-size: 12px;
+                    color: #475569;
+                    display: block;
+                    margin-bottom: 8px;
+                  "
+                  >หลักฐานประกอบ (Evidence)</label
+                >
+                <div
+                  style="
+                    display: grid;
+                    grid-template-columns: repeat(3, 1fr);
+                    gap: 10px;
+                    margin-bottom: 10px;
+                  "
+                >
+                  <div class="ev-upload">
+                    <i class="ti ti-photo" style="font-size: 20px"></i>
+                    <div style="margin-top: 6px">แนบรูปภาพ</div>
+                  </div>
+                  <div class="ev-upload">
+                    <i class="ti ti-file" style="font-size: 20px"></i>
+                    <div style="margin-top: 6px">แนบไฟล์</div>
+                  </div>
+                  <div class="ev-upload">
+                    <i class="ti ti-device-desktop" style="font-size: 20px"></i>
+                    <div style="margin-top: 6px">แนบ Screenshot</div>
+                  </div>
+                </div>
+                <div style="margin-bottom: 10px">
+                  <div
+                    style="
+                      display: flex;
+                      align-items: center;
+                      gap: 8px;
+                      border: 1px solid #e2e8f0;
+                      border-radius: 10px;
+                      padding: 9px 12px;
+                    "
+                  >
+                    <i
+                      class="ti ti-link"
+                      style="color: #94a3b8; font-size: 16px"
+                    ></i>
+                    <input
+                      type="text"
+                      placeholder="แนบลิงก์ (URL)"
+                      style="
+                        border: none;
+                        outline: none;
+                        font-size: 13px;
+                        color: #1e293b;
+                        flex: 1;
+                      "
+                    />
+                  </div>
+                </div>
+                <textarea
+                  rows="2"
+                  placeholder="หมายเหตุเพิ่มเติม"
+                  style="
+                    width: 100%;
+                    padding: 10px 14px;
+                    border: 1px solid #e2e8f0;
+                    border-radius: 10px;
+                    font-size: 13px;
+                    color: #1e293b;
+                    resize: vertical;
+                  "
+                ></textarea>
+              </div>
+
+              <div>
+                <label
+                  style="
+                    font-size: 12px;
+                    color: #475569;
+                    display: block;
+                    margin-bottom: 6px;
+                  "
+                  >เกิดขึ้นที่ขั้นตอนใดของงาน</label
+                >
+                <div class="ev-field">
+                  <div>
+                    <p class="ev-field-val">ขออนุมัติ</p>
+                    <p class="ev-field-label">เกิดขึ้นที่ขั้นตอนใดของงาน</p>
+                  </div>
+                  <i class="ti ti-chevron-down" style="color: #94a3b8"></i>
+                </div>
+              </div>
+            </div>
+
+            <div class="ev-card">
+              <div class="ev-sec-head">
+                <span class="ev-num">4</span>
+                <div>
+                  <p class="ev-sec-title">ความเป็นส่วนตัว &amp; ความยินยอม</p>
+                  <p class="ev-sec-sub">Privacy &amp; Consent</p>
+                </div>
+              </div>
+
+              <div style="margin-top: 14px">
+                <div class="ev-check-row">
+                  <span class="ev-checkbox"
+                    ><i class="ti ti-check" style="font-size: 12px"></i
+                  ></span>
+                  <span style="font-size: 12.5px; color: #334155"
+                    >อนุญาตให้ระบบใช้ข้อมูลนี้เพื่อการวิเคราะห์เชิงสถิติ</span
+                  >
+                </div>
+                <div class="ev-check-row">
+                  <span class="ev-checkbox"
+                    ><i class="ti ti-check" style="font-size: 12px"></i
+                  ></span>
+                  <span style="font-size: 12.5px; color: #334155"
+                    >อนุญาตให้ AI สรุปและจัดหมวดหมู่ข้อมูล</span
+                  >
+                </div>
+                <div class="ev-check-row">
+                  <span class="ev-checkbox"
+                    ><i class="ti ti-check" style="font-size: 12px"></i
+                  ></span>
+                  <span style="font-size: 12.5px; color: #334155"
+                    >ต้องการปกปิดตัวตน (Anonymous Submission)</span
+                  >
+                </div>
+              </div>
+
+              <div
+                style="
+                  display: flex;
+                  gap: 8px;
+                  align-items: flex-start;
+                  background: #e1f5ee;
+                  border: 1px solid #bfe3da;
+                  border-radius: 10px;
+                  padding: 12px 14px;
+                  margin-top: 14px;
+                "
+              >
+                <i
+                  class="ti ti-shield-lock"
+                  style="color: #0f6e56; font-size: 16px; margin-top: 1px"
+                ></i>
+                <span
+                  style="font-size: 11.5px; color: #0f6e56; line-height: 1.5"
+                  >เมื่อเลือกปกปิดตัวตน ระบบจะไม่บันทึกข้อมูลผู้ส่งเลย
+                  ไม่มีทางย้อนกลับไปหาผู้ส่งได้</span
+                >
+              </div>
+            </div>
+
+            <div
+              style="
+                display: flex;
+                justify-content: flex-end;
+                gap: 10px;
+                margin-top: 6px;
+              "
+            >
+              <button
+                style="
+                  padding: 10px 20px;
+                  background: #fff;
+                  border: 1px solid #e2e8f0;
+                  border-radius: 10px;
+                  font-size: 13px;
+                  color: #475569;
+                "
+              >
+                ยกเลิก
+              </button>
+              <button
+                style="
+                  padding: 10px 26px;
+                  background: #368b89;
+                  border: none;
+                  border-radius: 10px;
+                  font-size: 13px;
+                  color: #fff;
+                  font-weight: 500;
+                "
+              >
+                ส่งสัญญาณ
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <div class="ev-screen active" data-screen="dashboard">
+          <div style="padding-bottom: 26px">
+            <div
+              style="
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                padding: 22px 26px 0;
+                flex-wrap: wrap;
+                gap: 10px;
+              "
+            >
+              <div
+                style="
+                  display: flex;
+                  align-items: center;
+                  gap: 8px;
+                  font-size: 12.5px;
+                  color: #94a3b8;
+                "
+              >
+                <i class="ti ti-layout-grid" style="font-size: 15px"></i>
+                <span>หลัก</span><span>/</span
+                ><span style="color: #1e293b; font-weight: 500">ภาพรวม</span>
+              </div>
+              <div
+                style="
+                  display: flex;
+                  align-items: center;
+                  gap: 8px;
+                  flex-wrap: wrap;
+                "
+              >
+                <div
+                  style="
+                    display: flex;
+                    align-items: center;
+                    gap: 6px;
+                    background: #fff;
+                    border: 1px solid #e2e8f0;
+                    border-radius: 10px;
+                    padding: 7px 12px;
+                    font-size: 12px;
+                    color: #475569;
+                  "
+                >
+                  <i class="ti ti-chevron-left" style="font-size: 14px"></i>
+                  <i
+                    class="ti ti-calendar"
+                    style="font-size: 14px; color: #94a3b8"
+                  ></i>
+                  <span>1 – 31 ก.ค. 2569</span>
+                  <i class="ti ti-chevron-right" style="font-size: 14px"></i>
+                </div>
+                <button
+                  style="
+                    display: flex;
+                    align-items: center;
+                    gap: 6px;
+                    background: #368b89;
+                    color: #fff;
+                    border: none;
+                    border-radius: 10px;
+                    padding: 8px 14px;
+                    font-size: 12px;
+                    font-weight: 500;
+                    white-space: nowrap;
+                  "
+                >
+                  <i class="ti ti-sparkles" style="font-size: 14px"></i
+                  >ลองระบบวิเคราะห์อัตโนมัติ
+                </button>
+                <span class="ev-icon-btn"
+                  ><i class="ti ti-bell" style="font-size: 15px"></i
+                ></span>
+                <div
+                  style="
+                    width: 30px;
+                    height: 30px;
+                    border-radius: 50%;
+                    background: #e1f5ee;
+                    color: #0f6e56;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    font-size: 11px;
+                    font-weight: 600;
+                    flex-shrink: 0;
+                  "
+                >
+                  PT
+                </div>
+              </div>
+            </div>
+
+            <div style="padding: 20px 26px 4px">
+              <h2
+                style="
+                  margin: 0 0 4px;
+                  font-size: 22px;
+                  font-weight: 500;
+                  color: #1e293b;
+                "
+              >
+                ยินดีต้อนรับกลับมา, พิติ!
+              </h2>
+              <p style="margin: 0; font-size: 13px; color: #64748b">
+                สรุปข้อมูลล่าสุดพร้อมแล้ว AI ปรับประเด็นสำคัญของวันนี้ให้คุณ
+              </p>
+            </div>
+
+            <div
+              style="
+                display: grid;
+                grid-template-columns: 1.2fr 1fr 1fr;
+                gap: 14px;
+                padding: 16px 26px;
+              "
+            >
+              <div class="ev-card2">
+                <div
+                  style="
+                    display: flex;
+                    justify-content: space-between;
+                    align-items: center;
+                    margin-bottom: 10px;
+                  "
+                >
+                  <span
+                    style="
+                      font-size: 12.5px;
+                      font-weight: 500;
+                      color: #1e293b;
+                      display: flex;
+                      align-items: center;
+                      gap: 6px;
+                    "
+                    ><i
+                      class="ti ti-chart-bar"
+                      style="font-size: 15px; color: #368b89"
+                    ></i
+                    >แนวโน้มสัญญาณ</span
+                  >
+                  <i
+                    class="ti ti-arrow-up-right"
+                    style="font-size: 14px; color: #94a3b8"
+                  ></i>
+                </div>
+                <p
+                  style="
+                    margin: 0;
+                    font-size: 24px;
+                    font-weight: 500;
+                    color: #1e293b;
+                  "
+                >
+                  128
+                  <span
+                    style="font-size: 12px; font-weight: 500; color: #16a34a"
+                    >+12</span
+                  >
+                </p>
+                <p style="margin: 0 0 12px; font-size: 11.5px; color: #94a3b8">
+                  สัญญาณสัปดาห์นี้
+                </p>
+                <div style="position: relative; height: 110px">
+                  <canvas id="ev-bar-chart"></canvas>
+                </div>
+              </div>
+
+              <div class="ev-card2">
+                <div
+                  style="
+                    display: flex;
+                    justify-content: space-between;
+                    align-items: center;
+                    margin-bottom: 10px;
+                  "
+                >
+                  <span
+                    style="
+                      font-size: 12.5px;
+                      font-weight: 500;
+                      color: #1e293b;
+                      display: flex;
+                      align-items: center;
+                      gap: 6px;
+                    "
+                    ><i
+                      class="ti ti-clock"
+                      style="font-size: 15px; color: #368b89"
+                    ></i
+                    >รอบวิเคราะห์ถัดไป</span
+                  >
+                  <i
+                    class="ti ti-arrow-up-right"
+                    style="font-size: 14px; color: #94a3b8"
+                  ></i>
+                </div>
+                <div
+                  style="
+                    background: #f8fafc;
+                    border-radius: 12px;
+                    padding: 16px;
+                    text-align: center;
+                    margin-bottom: 12px;
+                  "
+                >
+                  <p style="margin: 0 0 4px; font-size: 11px; color: #94a3b8">
+                    รอบถัดไปในอีก
+                  </p>
+                  <p
+                    style="
+                      margin: 0 0 10px;
+                      font-size: 26px;
+                      font-weight: 500;
+                      color: #1e293b;
+                    "
+                  >
+                    3 วัน
+                  </p>
+                  <button
+                    style="
+                      width: 100%;
+                      padding: 8px;
+                      background: #368b89;
+                      color: #fff;
+                      border: none;
+                      border-radius: 8px;
+                      font-size: 12px;
+                      font-weight: 500;
+                      display: flex;
+                      align-items: center;
+                      justify-content: center;
+                      gap: 6px;
+                    "
+                  >
+                    <i class="ti ti-player-play" style="font-size: 13px"></i
+                    >เรียกใช้ตอนนี้
+                  </button>
+                </div>
+                <p style="margin: 0 0 6px; font-size: 11px; color: #94a3b8">
+                  รอบล่าสุด
+                </p>
+                <div style="display: flex; flex-direction: column; gap: 6px">
+                  <div
+                    style="
+                      display: flex;
+                      justify-content: space-between;
+                      align-items: center;
+                    "
+                  >
+                    <span style="font-size: 12px; color: #334155"
+                      >มิ.ย. 2569 · เสร็จสมบูรณ์</span
+                    >
+                    <i
+                      class="ti ti-dots"
+                      style="font-size: 14px; color: #94a3b8"
+                    ></i>
+                  </div>
+                  <div
+                    style="
+                      display: flex;
+                      justify-content: space-between;
+                      align-items: center;
+                    "
+                  >
+                    <span style="font-size: 12px; color: #334155"
+                      >พ.ค. 2569 · เสร็จสมบูรณ์</span
+                    >
+                    <i
+                      class="ti ti-dots"
+                      style="font-size: 14px; color: #94a3b8"
+                    ></i>
+                  </div>
+                </div>
+              </div>
+
+              <div class="ev-card2">
+                <div
+                  style="
+                    display: flex;
+                    justify-content: space-between;
+                    align-items: center;
+                    margin-bottom: 10px;
+                  "
+                >
+                  <span
+                    style="
+                      font-size: 12.5px;
+                      font-weight: 500;
+                      color: #1e293b;
+                      display: flex;
+                      align-items: center;
+                      gap: 6px;
+                    "
+                    ><i
+                      class="ti ti-chart-donut"
+                      style="font-size: 15px; color: #368b89"
+                    ></i
+                    >สรุปประจำเดือน</span
+                  >
+                  <i
+                    class="ti ti-arrow-up-right"
+                    style="font-size: 14px; color: #94a3b8"
+                  ></i>
+                </div>
+                <div
+                  style="position: relative; height: 110px; margin-bottom: 10px"
+                >
+                  <canvas id="ev-donut-chart"></canvas>
+                </div>
+                <div style="display: flex; flex-direction: column; gap: 6px">
+                  <div
+                    style="
+                      display: flex;
+                      justify-content: space-between;
+                      align-items: center;
+                    "
+                  >
+                    <span
+                      style="
+                        display: flex;
+                        align-items: center;
+                        gap: 6px;
+                        font-size: 11.5px;
+                        color: #334155;
+                      "
+                      ><span
+                        style="
+                          width: 8px;
+                          height: 8px;
+                          border-radius: 50%;
+                          background: #16a34a;
+                          display: inline-block;
+                        "
+                      ></span
+                      >เชิงบวก</span
+                    >
+                    <span style="font-size: 11.5px; color: #94a3b8">45%</span>
+                  </div>
+                  <div
+                    style="
+                      display: flex;
+                      justify-content: space-between;
+                      align-items: center;
+                    "
+                  >
+                    <span
+                      style="
+                        display: flex;
+                        align-items: center;
+                        gap: 6px;
+                        font-size: 11.5px;
+                        color: #334155;
+                      "
+                      ><span
+                        style="
+                          width: 8px;
+                          height: 8px;
+                          border-radius: 50%;
+                          background: #dc2626;
+                          display: inline-block;
+                        "
+                      ></span
+                      >ผลกระทบสูง</span
+                    >
+                    <span style="font-size: 11.5px; color: #94a3b8">15%</span>
+                  </div>
+                  <div
+                    style="
+                      display: flex;
+                      justify-content: space-between;
+                      align-items: center;
+                    "
+                  >
+                    <span
+                      style="
+                        display: flex;
+                        align-items: center;
+                        gap: 6px;
+                        font-size: 11.5px;
+                        color: #334155;
+                      "
+                      ><span
+                        style="
+                          width: 8px;
+                          height: 8px;
+                          border-radius: 50%;
+                          background: #368b89;
+                          display: inline-block;
+                        "
+                      ></span
+                      >ปกติ</span
+                    >
+                    <span style="font-size: 11.5px; color: #94a3b8">40%</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div
+              style="
+                padding: 0 26px;
+                display: flex;
+                flex-direction: column;
+                gap: 14px;
+              "
+            >
+              <div
+                class="ev-card2"
+                style="
+                  display: flex;
+                  gap: 16px;
+                  align-items: center;
+                  flex-wrap: wrap;
+                "
+              >
+                <div
+                  style="
+                    width: 56px;
+                    height: 56px;
+                    border-radius: 50%;
+                    flex-shrink: 0;
+                    background: radial-gradient(
+                      circle at 32% 30%,
+                      #a9e7da,
+                      #368b89 60%,
+                      #1f4a48
+                    );
+                  "
+                ></div>
+                <div style="flex: 1; min-width: 220px">
+                  <p
+                    style="
+                      margin: 0 0 4px;
+                      font-size: 12.5px;
+                      font-weight: 500;
+                      color: #368b89;
+                    "
+                  >
+                    สรุปผู้บริหาร (AI) · กรกฎาคม 2569
+                  </p>
+                  <p
+                    style="
+                      margin: 0;
+                      font-size: 12.5px;
+                      color: #334155;
+                      line-height: 1.6;
+                    "
+                  >
+                    สัญญาณคงที่ในภาพรวม
+                    พบปัญหาซ้ำเรื่องขั้นตอนอนุมัติในฝ่ายการเงินและไอที
+                    ขณะที่ความคิดเห็นเชิงบวกด้านการทำงานร่วมกันเพิ่มขึ้น
+                  </p>
+                </div>
+                <div style="text-align: center; flex-shrink: 0">
+                  <p
+                    style="
+                      margin: 0;
+                      font-size: 20px;
+                      font-weight: 500;
+                      color: #16a34a;
+                    "
+                  >
+                    +18%
+                  </p>
+                  <p
+                    style="
+                      margin: 0;
+                      font-size: 10.5px;
+                      color: #94a3b8;
+                      white-space: nowrap;
+                    "
+                  >
+                    ลดปัญหาที่คาดการณ์
+                  </p>
+                </div>
+              </div>
+
+              <div class="ev-card2">
+                <div
+                  style="
+                    display: flex;
+                    justify-content: space-between;
+                    align-items: center;
+                    margin-bottom: 12px;
+                    flex-wrap: wrap;
+                    gap: 8px;
+                  "
+                >
+                  <span
+                    style="
+                      font-size: 13px;
+                      font-weight: 500;
+                      color: #1e293b;
+                      display: flex;
+                      align-items: center;
+                      gap: 6px;
+                    "
+                    ><i
+                      class="ti ti-history"
+                      style="font-size: 15px; color: #368b89"
+                    ></i
+                    >ประวัติสัญญาณล่าสุด</span
+                  >
+                  <div style="display: flex; gap: 6px">
+                    <span class="ev-icon-btn"
+                      ><i class="ti ti-search" style="font-size: 14px"></i
+                    ></span>
+                    <span class="ev-icon-btn"
+                      ><i class="ti ti-filter" style="font-size: 14px"></i
+                    ></span>
+                  </div>
+                </div>
+                <div
+                  style="
+                    display: grid;
+                    grid-template-columns: 2fr 1fr 1fr 0.9fr;
+                    padding: 0 4px 8px;
+                    font-size: 11px;
+                    color: #94a3b8;
+                    border-bottom: 1px solid #e2e8f0;
+                  "
+                >
+                  <span>สัญญาณ</span><span>เวลา</span><span>ผลกระทบ</span
+                  ><span>ประเภท</span>
+                </div>
+                <div class="ev-hist-row">
+                  <div>
+                    <p style="margin: 0; font-size: 12.5px; color: #1e293b">
+                      การอนุมัติค่าใช้จ่ายล่าช้ากว่าสัปดาห์
+                    </p>
+                    <p style="margin: 0; font-size: 11px; color: #94a3b8">
+                      การเงิน
+                    </p>
+                  </div>
+                  <span style="font-size: 12px; color: #475569"
+                    >2 ชม.ที่แล้ว</span
+                  >
+                  <span
+                    style="font-size: 12px; color: #dc2626; font-weight: 500"
+                    >สูง</span
+                  >
+                  <span
+                    style="
+                      font-size: 10.5px;
+                      background: #fcebeb;
+                      color: #791f1f;
+                      padding: 3px 9px;
+                      border-radius: 999px;
+                      font-weight: 500;
+                      width: fit-content;
+                    "
+                    >Incident</span
+                  >
+                </div>
+                <div class="ev-hist-row">
+                  <div>
+                    <p style="margin: 0; font-size: 12.5px; color: #1e293b">
+                      ระบบ Onboarding เพื่อนคู่หูได้รับคำชม
+                    </p>
+                    <p style="margin: 0; font-size: 11px; color: #94a3b8">
+                      ทรัพยากรบุคคล
+                    </p>
+                  </div>
+                  <span style="font-size: 12px; color: #475569"
+                    >5 ชม.ที่แล้ว</span
+                  >
+                  <span
+                    style="font-size: 12px; color: #16a34a; font-weight: 500"
+                    >เชิงบวก</span
+                  >
+                  <span
+                    style="
+                      font-size: 10.5px;
+                      background: #eaf3de;
+                      color: #3b6d11;
+                      padding: 3px 9px;
+                      border-radius: 999px;
+                      font-weight: 500;
+                      width: fit-content;
+                    "
+                    >Positive</span
+                  >
+                </div>
+                <div class="ev-hist-row">
+                  <div>
+                    <p style="margin: 0; font-size: 12.5px; color: #1e293b">
+                      ต้องกรอกข้อมูลซ้ำ 3 ระบบ
+                    </p>
+                    <p style="margin: 0; font-size: 11px; color: #94a3b8">
+                      ไอที
+                    </p>
+                  </div>
+                  <span style="font-size: 12px; color: #475569"
+                    >1 วันที่แล้ว</span
+                  >
+                  <span
+                    style="font-size: 12px; color: #854f0b; font-weight: 500"
+                    >ปานกลาง</span
+                  >
+                  <span
+                    style="
+                      font-size: 10.5px;
+                      background: #faeeda;
+                      color: #854f0b;
+                      padding: 3px 9px;
+                      border-radius: 999px;
+                      font-weight: 500;
+                      width: fit-content;
+                    "
+                    >Workflow</span
+                  >
+                </div>
+                <div class="ev-hist-row">
+                  <div>
+                    <p style="margin: 0; font-size: 12.5px; color: #1e293b">
+                      ห้องประชุมถูกจองซ้อนกันบ่อยครั้ง
+                    </p>
+                    <p style="margin: 0; font-size: 11px; color: #94a3b8">
+                      ปฏิบัติการ
+                    </p>
+                  </div>
+                  <span style="font-size: 12px; color: #475569"
+                    >2 วันที่แล้ว</span
+                  >
+                  <span
+                    style="font-size: 12px; color: #3b6d11; font-weight: 500"
+                    >ต่ำ</span
+                  >
+                  <span
+                    style="
+                      font-size: 10.5px;
+                      background: #f1f5f9;
+                      color: #475569;
+                      padding: 3px 9px;
+                      border-radius: 999px;
+                      font-weight: 500;
+                      width: fit-content;
+                    "
+                    >Resource</span
+                  >
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="ev-screen" data-screen="members">
+          <div style="padding: 26px">
+            <div
+              style="
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                margin-bottom: 16px;
+              "
+            >
+              <h2
+                style="
+                  margin: 0;
+                  font-size: 17px;
+                  font-weight: 500;
+                  color: #1e293b;
+                "
+              >
+                Members
+              </h2>
+              <button
+                style="
+                  padding: 8px 16px;
+                  background: #368b89;
+                  color: #fff;
+                  border: none;
+                  border-radius: 8px;
+                  font-size: 12.5px;
+                  font-weight: 500;
+                "
+              >
+                <i
+                  class="ti ti-plus"
+                  style="margin-right: 4px; font-size: 13px"
+                ></i
+                >Invite member
+              </button>
+            </div>
+            <div
+              style="
+                background: #fff;
+                border: 1px solid #e2e8f0;
+                border-radius: 10px;
+                overflow: hidden;
+              "
+            >
+              <div
+                style="
+                  display: grid;
+                  grid-template-columns: 2fr 1fr 1.2fr 1fr;
+                  padding: 10px 16px;
+                  background: #f8fafc;
+                  border-bottom: 1px solid #e2e8f0;
+                  font-size: 11px;
+                  color: #64748b;
+                  font-weight: 500;
+                "
+              >
+                <span>Name</span><span>Role</span><span>Department</span
+                ><span>Status</span>
+              </div>
+              <div
+                style="
+                  display: grid;
+                  grid-template-columns: 2fr 1fr 1.2fr 1fr;
+                  padding: 12px 16px;
+                  border-bottom: 1px solid #e2e8f0;
+                  align-items: center;
+                "
+              >
+                <div style="display: flex; align-items: center; gap: 8px">
+                  <div
+                    style="
+                      width: 28px;
+                      height: 28px;
+                      border-radius: 50%;
+                      background: #e1f5ee;
+                      color: #0f6e56;
+                      display: flex;
+                      align-items: center;
+                      justify-content: center;
+                      font-size: 11px;
+                      font-weight: 500;
+                    "
+                  >
+                    PT
+                  </div>
+                  <div>
+                    <p style="margin: 0; font-size: 12.5px; color: #1e293b">
+                      Piti Thanawat
+                    </p>
+                    <p style="margin: 0; font-size: 11px; color: #94a3b8">
+                      piti@ssci.co.th
+                    </p>
+                  </div>
+                </div>
+                <span
+                  style="
+                    font-size: 11px;
+                    background: #e1f5ee;
+                    color: #0f6e56;
+                    padding: 3px 9px;
+                    border-radius: 999px;
+                    font-weight: 500;
+                    width: fit-content;
+                  "
+                  >Org admin</span
+                >
+                <span style="font-size: 12.5px; color: #334155">IT</span>
+                <span
+                  style="
+                    font-size: 11px;
+                    background: #eaf3de;
+                    color: #3b6d11;
+                    padding: 3px 9px;
+                    border-radius: 999px;
+                    font-weight: 500;
+                    width: fit-content;
+                  "
+                  >Active</span
+                >
+              </div>
+              <div
+                style="
+                  display: grid;
+                  grid-template-columns: 2fr 1fr 1.2fr 1fr;
+                  padding: 12px 16px;
+                  border-bottom: 1px solid #e2e8f0;
+                  align-items: center;
+                "
+              >
+                <div style="display: flex; align-items: center; gap: 8px">
+                  <div
+                    style="
+                      width: 28px;
+                      height: 28px;
+                      border-radius: 50%;
+                      background: #eff6ff;
+                      color: #1d4ed8;
+                      display: flex;
+                      align-items: center;
+                      justify-content: center;
+                      font-size: 11px;
+                      font-weight: 500;
+                    "
+                  >
+                    NW
+                  </div>
+                  <div>
+                    <p style="margin: 0; font-size: 12.5px; color: #1e293b">
+                      Nara Wattana
+                    </p>
+                    <p style="margin: 0; font-size: 11px; color: #94a3b8">
+                      nara@ssci.co.th
+                    </p>
+                  </div>
+                </div>
+                <span
+                  style="
+                    font-size: 11px;
+                    background: #eff6ff;
+                    color: #1d4ed8;
+                    padding: 3px 9px;
+                    border-radius: 999px;
+                    font-weight: 500;
+                    width: fit-content;
+                  "
+                  >Org viewer</span
+                >
+                <span style="font-size: 12.5px; color: #334155">HR</span>
+                <span
+                  style="
+                    font-size: 11px;
+                    background: #eaf3de;
+                    color: #3b6d11;
+                    padding: 3px 9px;
+                    border-radius: 999px;
+                    font-weight: 500;
+                    width: fit-content;
+                  "
+                  >Active</span
+                >
+              </div>
+              <div
+                style="
+                  display: grid;
+                  grid-template-columns: 2fr 1fr 1.2fr 1fr;
+                  padding: 12px 16px;
+                  align-items: center;
+                "
+              >
+                <div style="display: flex; align-items: center; gap: 8px">
+                  <div
+                    style="
+                      width: 28px;
+                      height: 28px;
+                      border-radius: 50%;
+                      background: #f1f5f9;
+                      color: #475569;
+                      display: flex;
+                      align-items: center;
+                      justify-content: center;
+                      font-size: 11px;
+                      font-weight: 500;
+                    "
+                  >
+                    SS
+                  </div>
+                  <div>
+                    <p style="margin: 0; font-size: 12.5px; color: #1e293b">
+                      Somchai Srisuk
+                    </p>
+                    <p style="margin: 0; font-size: 11px; color: #94a3b8">
+                      somchai@ssci.co.th
+                    </p>
+                  </div>
+                </div>
+                <span
+                  style="
+                    font-size: 11px;
+                    background: #f1f5f9;
+                    color: #475569;
+                    padding: 3px 9px;
+                    border-radius: 999px;
+                    font-weight: 500;
+                    width: fit-content;
+                  "
+                  >Employee</span
+                >
+                <span style="font-size: 12.5px; color: #334155">Finance</span>
+                <span
+                  style="
+                    font-size: 11px;
+                    background: #faeeda;
+                    color: #854f0b;
+                    padding: 3px 9px;
+                    border-radius: 999px;
+                    font-weight: 500;
+                    width: fit-content;
+                  "
+                  >Invited</span
+                >
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script>
+      function evSwitch(name) {
+        document.querySelectorAll(".ev-tab").forEach(function (b) {
+          b.classList.toggle("active", b.getAttribute("data-screen") === name);
+        });
+        document.querySelectorAll(".ev-screen").forEach(function (s) {
+          s.classList.toggle("active", s.getAttribute("data-screen") === name);
+        });
+        if (name === "dashboard") {
+          requestAnimationFrame(function () {
+            if (window.evBarChart) window.evBarChart.resize();
+            if (window.evDonutChart) window.evDonutChart.resize();
+          });
+        }
+      }
+      function evInitCharts() {
+        if (typeof Chart === "undefined") return;
+        var barCtx = document.getElementById("ev-bar-chart");
+        if (barCtx && !window.evBarChart) {
+          window.evBarChart = new Chart(barCtx, {
+            type: "bar",
+            data: {
+              labels: ["อา", "จ", "อ", "พ", "พฤ", "ศ", "ส"],
+              datasets: [
+                {
+                  data: [14, 18, 22, 30, 35, 20, 10],
+                  backgroundColor: [
+                    "#CBD5E1",
+                    "#CBD5E1",
+                    "#CBD5E1",
+                    "#CBD5E1",
+                    "#368B89",
+                    "#CBD5E1",
+                    "#CBD5E1",
+                  ],
+                  borderRadius: 4,
+                  maxBarThickness: 14,
+                },
+              ],
+            },
+            options: {
+              plugins: { legend: { display: false } },
+              scales: {
+                x: {
+                  grid: { display: false },
+                  ticks: { font: { size: 10 }, color: "#94A3B8" },
+                },
+                y: { display: false },
+              },
+              responsive: true,
+              maintainAspectRatio: false,
+            },
+          });
+        }
+        var donutCtx = document.getElementById("ev-donut-chart");
+        if (donutCtx && !window.evDonutChart) {
+          window.evDonutChart = new Chart(donutCtx, {
+            type: "doughnut",
+            data: {
+              labels: ["เชิงบวก", "ผลกระทบสูง", "ปกติ"],
+              datasets: [
+                {
+                  data: [45, 15, 40],
+                  backgroundColor: ["#16A34A", "#DC2626", "#368B89"],
+                  borderWidth: 0,
+                },
+              ],
+            },
+            options: {
+              cutout: "70%",
+              plugins: { legend: { display: false } },
+              responsive: true,
+              maintainAspectRatio: false,
+            },
+          });
+        }
+      }
+      document.addEventListener("DOMContentLoaded", evInitCharts);
+      evInitCharts();
+    </script>
+  </body>
+</html>

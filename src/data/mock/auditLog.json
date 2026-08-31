@@ -1,0 +1,66 @@
+[
+  {
+    "id": "aud_001",
+    "actorName": "Anurak Thongchai",
+    "actorRole": "org_admin",
+    "action": "run_analysis",
+    "target": "Period 2026-07",
+    "createdAt": "2026-07-09T01:00:00Z"
+  },
+  {
+    "id": "aud_002",
+    "actorName": "Preeya Wong",
+    "actorRole": "org_viewer",
+    "action": "view_dashboard",
+    "target": "Dashboard Overview",
+    "createdAt": "2026-07-08T07:45:00Z"
+  },
+  {
+    "id": "aud_003",
+    "actorName": "Kanya Sirichai",
+    "actorRole": "org_admin",
+    "action": "invite_member",
+    "target": "ploy.intra@meridian.co.th",
+    "createdAt": "2026-07-01T04:20:00Z"
+  },
+  {
+    "id": "aud_004",
+    "actorName": "Kanya Sirichai",
+    "actorRole": "org_admin",
+    "action": "edit_role",
+    "target": "Wichai Ratanakul → employee",
+    "createdAt": "2026-06-28T06:10:00Z"
+  },
+  {
+    "id": "aud_005",
+    "actorName": "Sunisa Chan",
+    "actorRole": "org_viewer",
+    "action": "view_dashboard",
+    "target": "Themes Detail — Approval steps delay delivery",
+    "createdAt": "2026-06-27T03:30:00Z"
+  },
+  {
+    "id": "aud_006",
+    "actorName": "Anurak Thongchai",
+    "actorRole": "org_admin",
+    "action": "update_org_settings",
+    "target": "min_group_threshold = 5",
+    "createdAt": "2026-06-20T08:00:00Z"
+  },
+  {
+    "id": "aud_007",
+    "actorName": "Kanya Sirichai",
+    "actorRole": "org_admin",
+    "action": "view_audit_log",
+    "target": "Audit Log",
+    "createdAt": "2026-06-18T09:15:00Z"
+  },
+  {
+    "id": "aud_008",
+    "actorName": "Kanya Sirichai",
+    "actorRole": "org_admin",
+    "action": "disable_member",
+    "target": "Arisa Tan",
+    "createdAt": "2026-06-15T02:40:00Z"
+  }
+]

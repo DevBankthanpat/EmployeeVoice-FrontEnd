@@ -1,0 +1,8 @@
+[
+  { "id": "dep_ops", "orgId": "org_001", "name": "Operations" },
+  { "id": "dep_cs", "orgId": "org_001", "name": "Customer Service" },
+  { "id": "dep_fin", "orgId": "org_001", "name": "Finance" },
+  { "id": "dep_it", "orgId": "org_001", "name": "IT" },
+  { "id": "dep_hr", "orgId": "org_001", "name": "Human Resources" },
+  { "id": "dep_sales", "orgId": "org_001", "name": "Sales" }
+]

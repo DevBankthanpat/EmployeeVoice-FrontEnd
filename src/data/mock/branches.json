@@ -1,0 +1,5 @@
+[
+  { "id": "br_bkk", "orgId": "org_001", "name": "Head Office (Bangkok)" },
+  { "id": "br_cnx", "orgId": "org_001", "name": "Chiang Mai Branch" },
+  { "id": "br_hkt", "orgId": "org_001", "name": "Phuket Branch" }
+]

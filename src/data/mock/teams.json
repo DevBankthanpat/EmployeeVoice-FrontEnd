@@ -1,0 +1,17 @@
+[
+  { "id": "team_ops_wh", "departmentId": "dep_ops", "name": "Warehouse" },
+  { "id": "team_ops_disp", "departmentId": "dep_ops", "name": "Dispatch" },
+  { "id": "team_cs_sup", "departmentId": "dep_cs", "name": "Support" },
+  {
+    "id": "team_fin_ap",
+    "departmentId": "dep_fin",
+    "name": "Accounts Payable"
+  },
+  { "id": "team_it_infra", "departmentId": "dep_it", "name": "Infrastructure" },
+  {
+    "id": "team_sales_field",
+    "departmentId": "dep_sales",
+    "name": "Field Sales"
+  },
+  { "id": "team_hr_ppl", "departmentId": "dep_hr", "name": "People Ops" }
+]
